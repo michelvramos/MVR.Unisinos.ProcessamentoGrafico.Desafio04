@@ -130,20 +130,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="List.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="stb_image.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="icon-unisinos.png" />
     <Image Include="ken_stage_01.png" />
     <Image Include="ken_stage_02.png" />
     <Image Include="ken_stage_03.png" />
     <Image Include="ken_stage_04.png" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="List.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="stb_image.h" />
   </ItemGroup>

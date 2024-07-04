@@ -24,14 +24,8 @@
     <ClCompile Include="Sprite.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="List.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="icon-unisinos.png">
-      <Filter>Source Files</Filter>
-    </Image>
     <Image Include="ken_stage_01.png">
       <Filter>Source Files</Filter>
     </Image>
@@ -50,9 +44,6 @@
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="Sprite.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="List.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -9,7 +9,6 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 #include "stb_image.h"
-#include "List.h"
 #include "Sprite.h"
 
 const GLint WIDTH = 384, HEIGHT = 224;
@@ -25,9 +24,7 @@ static bool loadTexture(const char* fileName, GLuint* texture, int* width, int* 
 
 	if (!image_data)
 	{
-
 		std::cerr << "ERROR: could not load " << fileName << std::endl;
-		//fprintf(stderr, "ERROR: could not load %s\n", file_name);
 		return false;
 	}
 
@@ -35,12 +32,6 @@ static bool loadTexture(const char* fileName, GLuint* texture, int* width, int* 
 	if ((*width & (*width - 1)) != 0 || (*height & (*height - 1)) != 0)
 	{
 		std::cerr << "WARNING: texture " << fileName << "is not power-of-2 dimensions\n";
-
-		/*
-		fprintf(
-			stderr, "WARNING: texture %s is not power-of-2 dimensions\n", file_name
-		);
-		*/
 	}
 
 	glGenTextures(1, texture);
@@ -160,25 +151,26 @@ int main()
 	*/
 
 
+	//the ocean
 	Sprite* background_01 = CreateBackgroundLayer("ken_stage_01.png", shaderProgram, 0.50f);
 	background_01->Translate(-20, HEIGHT - 176 - 72);
 
+	//ground
 	Sprite* background_02 = CreateBackgroundLayer("ken_stage_02.png", shaderProgram, 0.51f);
 	background_02->Translate(0, HEIGHT - 72);
 
+	//ship
 	Sprite* background_03 = CreateBackgroundLayer("ken_stage_03_2.png", shaderProgram, 0.52f);
 	background_03->Translate(0, HEIGHT - 176 - 62);
 
+	//barrels and boxes
 	Sprite* background_04 = CreateBackgroundLayer("ken_stage_04_2.png", shaderProgram, 0.53f);
 	background_04->Translate(550, HEIGHT - 130);
 
 	background_01->SideScroll(-200);
 	background_02->SideScroll(-200);
 	background_03->SideScroll(-200);
-	background_04->SideScroll(-200);
-
-	int oldScreenWidth = WIDTH;
-	int oldScrenHeight = HEIGHT;
+	background_04->SideScroll(-250);	
 
 	while (!glfwWindowShouldClose(window))
 	{
@@ -196,42 +188,7 @@ int main()
 
 		glfwGetWindowSize(window, &screenWidth, &screenHeight);
 
-		glViewport(0, 0, screenWidth, screenHeight);
-
-		if (screenWidth != oldScreenWidth || screenHeight != oldScrenHeight)
-		{
-			glm::mat4 proj = glm::ortho(0.0f, (float)screenWidth, (float)screenHeight, 0.0f, -1.0f, 1.0f);
-
-			background_01->SetProjection(proj);
-			background_02->SetProjection(proj);
-			background_03->SetProjection(proj);
-			background_04->SetProjection(proj);
-
-			oldScreenWidth = screenWidth;
-			oldScrenHeight = screenHeight;
-		}
-
-		const int state = glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT);
-
-		if (state == GLFW_PRESS)
-		{
-			double mouseX, mouseY;
-
-			glfwGetCursorPos(window, &mouseX, &mouseY);
-
-			double dx = mouseX - screenWidth / 2.0;
-			double dy = mouseY - screenHeight / 2.0;
-
-			float bg_01X = background_01->GetX();
-
-			if ((bg_01X > -343 && dx < 0) || (bg_01X < -87 && dx > 0))
-			{
-				background_01->SideScroll(dx * 0.001);
-				background_02->SideScroll(dx * 0.0015);
-				background_03->SideScroll(dx * 0.0014);
-				background_04->SideScroll(dx * 0.0015);
-			}
-		}
+		glViewport(0, 0, screenWidth, screenHeight);		
 
 		background_01->Draw();
 		background_02->Draw();
