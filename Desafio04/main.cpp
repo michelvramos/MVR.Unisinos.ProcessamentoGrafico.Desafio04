@@ -78,7 +78,7 @@ int main()
 
 #pragma region Basic Setup
 
-	GLFWwindow* window = glfwCreateWindow(WIDTH, HEIGHT, "ORTHO + MOUSE + TEXTURE", nullptr, nullptr);
+	GLFWwindow* window = glfwCreateWindow(WIDTH, HEIGHT, "MVR - Proc. Grafico - Desafio 04", nullptr, nullptr);
 
 	if (window == nullptr)
 	{
