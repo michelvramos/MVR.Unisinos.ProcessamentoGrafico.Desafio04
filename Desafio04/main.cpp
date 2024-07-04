@@ -161,7 +161,7 @@ int main()
 
 	//ship
 	Sprite* background_03 = CreateBackgroundLayer("ken_stage_03_2.png", shaderProgram, 0.52f);
-	background_03->Translate(0, HEIGHT - 176 - 62);
+	background_03->Translate(0, HEIGHT - 176 - 77);
 
 	//barrels and boxes
 	Sprite* background_04 = CreateBackgroundLayer("ken_stage_04_2.png", shaderProgram, 0.53f);
